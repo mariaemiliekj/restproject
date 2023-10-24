@@ -1,22 +1,13 @@
 // app.js
 
-require('dotenv').config()
+require('dotenv').config();
 
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var jwt = require('jsonwebtoken')
-
-// Constants
-const PORT = 8080;
-const HOST = '0.0.0.0';
-
-// App
-app.listen(PORT, HOST, () => {
-  console.log(`Running on http://${HOST}:${PORT}`);
-});
+var jwt = require('jsonwebtoken');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -30,7 +21,8 @@ var multiplyRouter = require('./routes/multiply');
 var divideRouter = require('./routes/divide');
 
 var db = require("./models");
-db.sequelize.sync({ force: false })
+db.sequelize.sync({ force: false });
+
 var app = express();
 
 // view engine setup
@@ -68,6 +60,12 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+// Server listening
+const PORT = 8080; // This allows you to pass the port from the environment.
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 
 module.exports = app;
