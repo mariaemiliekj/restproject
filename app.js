@@ -63,7 +63,7 @@ app.use(function(err, req, res, next) {
 });
 
 // Server listening
-const PORT = 8080; // This allows you to pass the port from the environment.
+const PORT = 3000; // This allows you to pass the port from the environment.
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
